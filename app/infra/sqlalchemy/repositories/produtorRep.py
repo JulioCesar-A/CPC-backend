@@ -3,12 +3,13 @@ import uuid
 from typing import List
 from sqlalchemy.exc import IntegrityError
 from fastapi import HTTPException
-from schemas import schemas
+from app.schemas import schemas
 from ..models import models
 from datetime import date
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from services.geradorHashing import gerar_hashing_senha
+from app.services.geradorHashing import gerar_hashing_senha
+
 class RepositorioProdutor():
 
     def __init__(self, db: AsyncSession):
