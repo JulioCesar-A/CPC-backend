@@ -70,10 +70,6 @@ class ProdutorCulturalBase(BaseModel):
 
 
 
-<<<<<<< HEAD
-=======
-Classes de Requisição para criação de Produtores Culturais
->>>>>>> cc609d4afafb80cd6928caac89860155b3667d9f
 class ProdutorPessoaFisicaCreateRequest(ProdutorCulturalBase):
     nome_completo : str
     cpf : str = Field(min_length=11, max_length=11)
@@ -91,10 +87,6 @@ class ProdutorPessoaJuridicaCreateRequest(ProdutorCulturalBase):
 
 
 
-<<<<<<< HEAD
-=======
-Classes de Requisição para atualização de Produtores Culturais
->>>>>>> cc609d4afafb80cd6928caac89860155b3667d9f
 class EnderecoUpdate(BaseModel):
     logradouro : Optional[str] = None
     numero : Optional[str] = None
@@ -140,10 +132,6 @@ class RenovacaoCreateRequest(BaseModel):
 
 
 
-<<<<<<< HEAD
-=======
-Classes de Requisição para atualização de Status dos Cadastros e Renovações
->>>>>>> cc609d4afafb80cd6928caac89860155b3667d9f
 class CadastroUpdateRequest(BaseModel):
     status : Optional[StatusGerais] = None
 
@@ -153,10 +141,6 @@ class RenovacaoUpdateRequest(BaseModel):
 
 
 
-<<<<<<< HEAD
-=======
-Classes de Resposta de Requisição
->>>>>>> cc609d4afafb80cd6928caac89860155b3667d9f
 class AnexosRetorno(BaseModel):
     id_anexo : int
     id_cadastro : int
