@@ -2,7 +2,7 @@ from typing import List
 from fastapi import FastAPI, Depends, File, Form, HTTPException, UploadFile 
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
-from schemas import schemas
+from app.schemas import schemas
 from infra.sqlalchemy.repositories import produtorRep
 from infra.sqlalchemy.config.database import get_db
 
