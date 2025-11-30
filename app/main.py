@@ -1,10 +1,11 @@
 from typing import List
+import uvicorn
 from fastapi import FastAPI, Depends, File, Form, HTTPException, UploadFile 
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.schemas import schemas
-from infra.sqlalchemy.repositories import produtorRep
-from infra.sqlalchemy.config.database import get_db
+from app.infra.sqlalchemy.repositories import produtorRep
+from app.infra.sqlalchemy.config.database import get_db
 
 app = FastAPI()
 
@@ -21,6 +22,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"], 
 )
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "app.main:app",
+        host="0.0.0.0",   # OBRIGATÓRIO
+        port=8000
+    )
 
 @app.get("/")
 async def home():
