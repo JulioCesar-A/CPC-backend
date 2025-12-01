@@ -1,4 +1,5 @@
 from typing import List
+from app.services.geradorHashing import gerar_hashing_senha
 import uvicorn
 from fastapi import FastAPI, Depends, File, Form, HTTPException, UploadFile 
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,7 +11,7 @@ from app.infra.sqlalchemy.config.database import get_db
 app = FastAPI()
 
 origins = [
-    "https://cpc-frontend.vercel.app/" ,
+    "https://cpc-frontend.vercel.app" ,
     "http://127.0.0.1:5173",
     "http://localhost:5173",
 ]
@@ -70,7 +71,7 @@ async def criar_produtor_pessoa_fisica(
 
         dados_produtor = schemas.ProdutorPessoaFisicaCreateRequest(
             email = email,
-            senha = await senha,
+            senha = await gerar_hashing_senha(senha),
             nome_completo = nome_completo,
             cpf = cpf,
             data_nascimento = data_nascimento,
