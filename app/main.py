@@ -37,65 +37,65 @@ async def home():
 
 @app.post("/produtor-pessoa-fisica", status_code=201)
 async def criar_produtor_pessoa_fisica(
-    nome_completo: str = Form(...),
-    cpf: str = Form(...),
-    email: str = Form(...),
-    senha: str = Form(...),
-    data_nascimento: str = Form(...),
-    logradouro: str = Form(...),
-    numero: str = Form(...),
-    bairro: str = Form(...),
-    cidade: str = Form(...),
-    estado: str = Form(...),
-    cep: str = Form(...),
+    # nome_completo: str = Form(...),
+    # cpf: str = Form(...),
+    # email: str = Form(...),
+    # senha: str = Form(...),
+    # data_nascimento: str = Form(...),
+    # logradouro: str = Form(...),
+    # numero: str = Form(...),
+    # bairro: str = Form(...),
+    # cidade: str = Form(...),
+    # estado: str = Form(...),
+    # cep: str = Form(...),
     
-    anexos : List[UploadFile] = File(...),
-    nomes_anexos : List[str] = Form(...),
+    # anexos : List[UploadFile] = File(...),
+    # nomes_anexos : List[str] = Form(...),
     
-    db : AsyncSession = Depends(get_db)
+    # db : AsyncSession = Depends(get_db)
 ):
-    repositorio_produtor = produtorRep.RepositorioProdutor(db)
+    # repositorio_produtor = produtorRep.RepositorioProdutor(db)
 
     try:
+        return {"message": "Produtor cultural pessoa física inserido com sucesso!"}
+    #     endereco = schemas.Endereco(
+    #         logradouro = logradouro,
+    #         numero = numero,
+    #         bairro = bairro,
+    #         cidade = cidade,
+    #         estado = estado,
+    #         cep = cep
+    #     )
 
-        endereco = schemas.Endereco(
-            logradouro = logradouro,
-            numero = numero,
-            bairro = bairro,
-            cidade = cidade,
-            estado = estado,
-            cep = cep
-        )
+    #     dados_produtor = schemas.ProdutorPessoaFisicaCreateRequest(
+    #         email = email,
+    #         senha = await gerar_hashing_senha(senha),
+    #         nome_completo = nome_completo,
+    #         cpf = cpf,
+    #         data_nascimento = data_nascimento,
+    #         endereco = endereco
+    #     )
 
-        dados_produtor = schemas.ProdutorPessoaFisicaCreateRequest(
-            email = email,
-            senha = await gerar_hashing_senha(senha),
-            nome_completo = nome_completo,
-            cpf = cpf,
-            data_nascimento = data_nascimento,
-            endereco = endereco
-        )
+    #     nomes_anexos = nomes_anexos[0].split(",")
 
-        nomes_anexos = nomes_anexos[0].split(",")
-
-        if len(anexos) != len(nomes_anexos):
-            raise HTTPException(
-                status_code=400
-            )
+    #     if len(anexos) != len(nomes_anexos):
+    #         raise HTTPException(
+    #             status_code=400
+    #         )
 
 
-        dados_anexos = []
+    #     dados_anexos = []
     
 
-        for index, arquivo in enumerate(anexos):
-            dados_anexos.append(schemas.Anexo(
-                nome_anexo = nomes_anexos[index],
-                arquivo = arquivo
-            ))
+    #     for index, arquivo in enumerate(anexos):
+    #         dados_anexos.append(schemas.Anexo(
+    #             nome_anexo = nomes_anexos[index],
+    #             arquivo = arquivo
+    #         ))
 
 
-        resultado = await repositorio_produtor.inserir_produtor_pessoa_fisica(dados_produtor, dados_anexos)
-        return resultado
+    #     resultado = await repositorio_produtor.inserir_produtor_pessoa_fisica(dados_produtor, dados_anexos)
+    #     return resultado
     
     except HTTPException as e:
         raise e
