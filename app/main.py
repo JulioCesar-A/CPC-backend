@@ -10,6 +10,7 @@ from app.infra.sqlalchemy.config.database import get_db
 
 app = FastAPI()
 
+
 origins = [
     "https://cpc-frontend.vercel.app" ,
     "http://127.0.0.1:5173",
