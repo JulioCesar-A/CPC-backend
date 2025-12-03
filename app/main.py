@@ -56,8 +56,6 @@ async def criar_produtor_pessoa_fisica(
 ):
     repositorio_produtor = produtorRep.RepositorioProdutor(db)
 
-
-
     try:
 
         endereco = schemas.Endereco(
